@@ -11,7 +11,7 @@ source:
   sha256: f5a389b9baff50346302b997518c4bd4c64589b4f5f96e93c3d2d7cacaa0ed42
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
@@ -39,11 +39,13 @@ requirements:
     - psutil
     - psycopg2
     - py-tools-ds >=0.12.4
+    - pyhdf
     - pyinstrument
     - pyorbital
     - pyproj
     - pyrsr >=0.3.1
     - python
+    - python-fmask
     - pytz
     - redis-py  # named redis on PyPI and redis-py on conda-forge; importable as 'redis'
     - redis-semaphore
