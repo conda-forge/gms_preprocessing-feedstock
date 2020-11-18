@@ -1,5 +1,5 @@
 {% set name = "gms_preprocessing" %}
-{% set version = "0.18.9" %}
+{% set version = "0.18.11" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/gms_preprocessing-{{ version }}.tar.gz
-  sha256: f5a389b9baff50346302b997518c4bd4c64589b4f5f96e93c3d2d7cacaa0ed42
+  sha256: 4623f108094da8465c483bbb860d4312ab7e9919f9e02852a2b224ca76ed96c7
 
 build:
   number: 1
@@ -39,11 +39,13 @@ requirements:
     - psutil
     - psycopg2
     - py-tools-ds >=0.16.2
+    - pyhdf
     - pyinstrument
     - pyorbital
     - pyproj
     - pyrsr >=0.3.1
     - python
+    - python-fmask
     - pytz
     - redis-py  # named redis on PyPI and redis-py on conda-forge; importable as 'redis'
     - redis-semaphore
