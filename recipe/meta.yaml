@@ -38,7 +38,7 @@ requirements:
     - pandas
     - psutil
     - psycopg2
-    - py-tools-ds >=0.12.4
+    - py-tools-ds >=0.16.2
     - pyinstrument
     - pyorbital
     - pyproj
