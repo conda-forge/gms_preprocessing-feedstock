@@ -11,7 +11,7 @@ source:
   sha256: 4623f108094da8465c483bbb860d4312ab7e9919f9e02852a2b224ca76ed96c7
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
@@ -38,7 +38,7 @@ requirements:
     - pandas
     - psutil
     - psycopg2
-    - py-tools-ds >=0.12.4
+    - py-tools-ds >=0.16.2
     - pyhdf
     - pyinstrument
     - pyorbital
