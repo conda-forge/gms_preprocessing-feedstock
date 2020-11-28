@@ -1,5 +1,5 @@
 {% set name = "gms_preprocessing" %}
-{% set version = "0.19.0" %}
+{% set version = "0.19.1" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/gms_preprocessing-{{ version }}.tar.gz
-  sha256: fd85f736771ee32c43db161ae5a02a04bf6df7de73f7e84fb7f385b42f54f714
+  sha256: 9dde6ad09d98c142b71781fca7c0f149cadc6de89e2d7b853e4d3e08159491c3
 
 build:
   number: 0
