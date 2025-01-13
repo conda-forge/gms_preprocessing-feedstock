@@ -7,18 +7,18 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/gms_preprocessing-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/gms_preprocessing-{{ version }}.tar.gz
   sha256: f475dafa830cd6821522a8bbb84594e4c0e809b3b09089c27a924e82c8682d33
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python
+    - python {{ python_min }}
   run:
     - arosics >=1.0.0
     - cerberus
@@ -44,7 +44,7 @@ requirements:
     - pyorbital
     - pyproj
     - pyrsr >=0.3.1
-    - python
+    - python >={{ python_min }}
     - python-fmask
     - pytz
     - redis-py  # named redis on PyPI and redis-py on conda-forge; importable as 'redis'
@@ -73,6 +73,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://gitext.gfz-potsdam.de/geomultisens/gms_preprocessing
