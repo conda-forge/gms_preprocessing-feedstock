@@ -73,6 +73,9 @@ tests:
         - gms_preprocessing.options
         - gms_preprocessing.processing
       pip_check: true
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
 
 about:
   summary: GeoMultiSens - Scalable Multi-Sensor Analysis of Remote Sensing Data
