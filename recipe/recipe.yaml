@@ -20,7 +20,7 @@ build:
 requirements:
   host:
     - pip
-    - python
+    - python ${{ python_min }}.*
   run:
     - arosics >=1.0.0
     - cerberus
@@ -46,7 +46,7 @@ requirements:
     - pyorbital
     - pyproj
     - pyrsr >=0.3.1
-    - python
+    - python >=${{ python_min }}
     - python-fmask
     - pytz
     - redis-py  # named redis on PyPI and redis-py on conda-forge; importable as 'redis'
