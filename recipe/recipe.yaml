@@ -27,7 +27,7 @@ requirements:
     - cerberus
     - dill
     - ephem
-    - gdal
+    - gdal <3.2  # "from gdalconst import GA_ReadOnly" was removed in 3.2
     - geoalchemy2
     - geoarray >=0.9.0
     - geopandas
