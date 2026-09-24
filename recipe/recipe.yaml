@@ -1,30 +1,33 @@
-{% set name = "gms_preprocessing" %}
-{% set version = "0.19.3" %}
+schema_version: 1
 
+context:
+  name: gms_preprocessing
+  version: "0.19.3"
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: ${{ name|lower }}
+  version: ${{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/gms_preprocessing-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/gms_preprocessing-${{ version }}.tar.gz
   sha256: f475dafa830cd6821522a8bbb84594e4c0e809b3b09089c27a924e82c8682d33
 
 build:
-  number: 0
+  number: 1
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: ${{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python
+    - python ${{ python_min }}.*
+    - setuptools
   run:
     - arosics >=1.0.0
     - cerberus
     - dill
     - ephem
-    - gdal
+    - gdal <3.2  # "from gdalconst import GA_ReadOnly" was removed in 3.2
     - geoalchemy2
     - geoarray >=0.9.0
     - geopandas
@@ -44,7 +47,7 @@ requirements:
     - pyorbital
     - pyproj
     - pyrsr >=0.3.1
-    - python
+    - python >=${{ python_min }}
     - python-fmask
     - pytz
     - redis-py  # named redis on PyPI and redis-py on conda-forge; importable as 'redis'
@@ -60,25 +63,26 @@ requirements:
     - timeout-decorator
     - tqdm
 
-test:
-  imports:
-    - gms_preprocessing
-    - gms_preprocessing.algorithms
-    - gms_preprocessing.io
-    - gms_preprocessing.misc
-    - gms_preprocessing.model
-    - gms_preprocessing.options
-    - gms_preprocessing.processing
-  commands:
-    - pip check
-  requires:
-    - pip
+tests:
+  - python:
+      imports:
+        - gms_preprocessing
+        - gms_preprocessing.algorithms
+        - gms_preprocessing.io
+        - gms_preprocessing.misc
+        - gms_preprocessing.model
+        - gms_preprocessing.options
+        - gms_preprocessing.processing
+      pip_check: true
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
 
 about:
-  home: https://gitext.gfz-potsdam.de/geomultisens/gms_preprocessing
   summary: GeoMultiSens - Scalable Multi-Sensor Analysis of Remote Sensing Data
   license: GPL-3.0-or-later
   license_file: LICENSE
+  homepage: https://gitext.gfz-potsdam.de/geomultisens/gms_preprocessing
 
 extra:
   recipe-maintainers:
