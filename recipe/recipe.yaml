@@ -1,19 +1,21 @@
-{% set name = "gms_preprocessing" %}
-{% set version = "0.19.3" %}
+schema_version: 1
 
+context:
+  name: gms_preprocessing
+  version: "0.19.3"
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: ${{ name|lower }}
+  version: ${{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/gms_preprocessing-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/${{ name[0] }}/${{ name }}/gms_preprocessing-${{ version }}.tar.gz
   sha256: f475dafa830cd6821522a8bbb84594e4c0e809b3b09089c27a924e82c8682d33
 
 build:
-  number: 0
+  number: 1
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: ${{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
@@ -60,25 +62,23 @@ requirements:
     - timeout-decorator
     - tqdm
 
-test:
-  imports:
-    - gms_preprocessing
-    - gms_preprocessing.algorithms
-    - gms_preprocessing.io
-    - gms_preprocessing.misc
-    - gms_preprocessing.model
-    - gms_preprocessing.options
-    - gms_preprocessing.processing
-  commands:
-    - pip check
-  requires:
-    - pip
+tests:
+  - python:
+      imports:
+        - gms_preprocessing
+        - gms_preprocessing.algorithms
+        - gms_preprocessing.io
+        - gms_preprocessing.misc
+        - gms_preprocessing.model
+        - gms_preprocessing.options
+        - gms_preprocessing.processing
+      pip_check: true
 
 about:
-  home: https://gitext.gfz-potsdam.de/geomultisens/gms_preprocessing
   summary: GeoMultiSens - Scalable Multi-Sensor Analysis of Remote Sensing Data
   license: GPL-3.0-or-later
   license_file: LICENSE
+  homepage: https://gitext.gfz-potsdam.de/geomultisens/gms_preprocessing
 
 extra:
   recipe-maintainers:
